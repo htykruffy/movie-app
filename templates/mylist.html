@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マイリスト - Moviary</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><a href="/">Moviary</a></h1>
+            <div class="user-info">
+                <p>{{ session['username'] }}さん</p>
+                <form action="{{ url_for('mylist') }}" method="GET">
+                    <button type="submit" class="mylist-btn">マイリスト</button>
+                </form>
+                <form action="{{ url_for('logout') }}" method="POST">
+                    <button type="submit" class="logout-btn">ログアウト</button>
+                </form>
+                <form action="{{ url_for('delete_account') }}" method="POST">
+                    <button type="submit" class="delete-account-btn" onclick="return confirm('アカウントを削除してもよろしいですか？')">アカウントを削除</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="movie-lists">
+            <div class="watched-movies">
+                <h2>視聴済み</h2>
+                <div class="movie-grid">
+                    {% for movie in watched_movies %}
+                    <div class="movie-item">
+                        <a href="{{ url_for('movie_detail', movie_id=movie.id) }}">
+                            <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" alt="{{ movie.title }}">
+                            <p>{{ movie.title }}</p>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="to-watch-movies">
+                <h2>視聴予定</h2>
+                <div class="movie-grid">
+                    {% for movie in to_watch_movies %}
+                    <div class="movie-item">
+                        <a href="{{ url_for('movie_detail', movie_id=movie.id) }}">
+                            <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" alt="{{ movie.title }}">
+                            <p>{{ movie.title }}</p>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

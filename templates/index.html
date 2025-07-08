@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moviary - ホーム</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><a href="/">Moviary</a></h1>
+            <div class="user-info">
+                <p>{{ session['username'] }}さん</p>
+                <form action="{{ url_for('mylist') }}" method="GET">
+                    <button type="submit" class="mylist-btn">マイリスト</button>
+                </form>
+                <form action="{{ url_for('logout') }}" method="POST">
+                    <button type="submit" class="logout-btn">ログアウト</button>
+                </form>
+                <form action="{{ url_for('delete_account') }}" method="POST">
+                    <button type="submit" class="delete-account-btn" onclick="return confirm('アカウントを削除してもよろしいですか？')">アカウントを削除</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <h2>映画を探す</h2>
+            <form method="GET" action="{{ url_for('index') }}" class="search-form">
+                <input type="text" name="query" placeholder="映画のタイトルを入力">
+                <input type="submit" value="検索">
+            </form>
+
+            {% if movies %}
+            <div class="movie-list">
+                <h3>検索結果</h3>
+                {% for movie in movies %}
+                <div class="movie-item">
+                    <a href="{{ url_for('movie_detail', movie_id=movie.id) }}">
+                        <img src="{{ movie.api_url }}" alt="{{ movie.title }}">
+                        <p>{{ movie.title }}</p>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
+
+

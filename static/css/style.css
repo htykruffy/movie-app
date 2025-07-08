@@ -1,0 +1,58 @@
+.header h1 a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.header {
+    border-bottom: 2px solid red;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-info form {
+    display: inline;
+}
+
+.user-info p {
+    margin: 0;
+    margin-right: 10px;
+}
+
+.movie-list {
+    padding: 20px 0;
+}
+
+.movie-item {
+    display: inline-block;
+    width: 200px;
+    text-align: center;
+    margin: 10px;
+    vertical-align: top;
+}
+
+.movie-item img {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}
+
+.movie-item p {
+    margin: 10px 0;
+    font-size: 14px;
+    height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+} 

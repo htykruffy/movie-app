@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ログイン</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<h1><a href="/">Moviary</a></h1>
+		</div>
+		<h1>ログイン</h1>
+		{% if error %}
+		<div class="error">{{ error }}</div>
+		{% endif %}
+		<form method="POST" action="{{ url_for('login') }}">
+			<div class="form-group">
+				<label for="user_name">ユーザー名:</label>
+				<input type="text" id="user_name" name="user_name" required>
+			</div>
+			<div class="form-group">
+				<label for="pass">パスワード:</label>
+				<input type="password" id="pass" name="pass" required>
+			</div>
+			<button type="submit" name="action" value="login">ログイン</button>
+			<button type="submit" name="action" value="新規作成">新規登録</button>
+		</form>
+	</div>
+</body>
+</html>

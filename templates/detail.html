@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ movie.title }} - Moviary</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+	<div class="header">
+            <h1><a href="/">Moviary</a></h1>
+            <div class="user-info">
+                <p>{{ session['username'] }}さん</p>
+                <form action="{{ url_for('mylist') }}" method="GET">
+                    <button type="submit" class="mylist-btn">マイリスト</button>
+                </form>
+                <form action="{{ url_for('logout') }}" method="POST">
+                    <button type="submit" class="logout-btn">ログアウト</button>
+                </form>
+                <form action="{{ url_for('delete_account') }}" method="POST">
+                    <button type="submit" class="delete-account-btn" onclick="return confirm('アカウントを削除してもよろしいですか？')">アカウントを削除</button>
+                </form>
+            </div>
+      </div>
+
+	<div class="detail-content">
+		<h1>{{ movie.title }}</h1>
+		<img src="https://image.tmdb.org/t/p/w300{{ movie.poster_path }}" alt="{{ movie.title }}">
+		<p><strong>概要:</strong> {{ movie.overview }}</p>
+		<p><strong>公開日:</strong> {{ movie.release_date }}</p>
+		<p><strong>平均評価:</strong> {{ movie.vote_average }}</p>
+	</div>
+	
+
+	<form method="POST" action="{{ url_for('save_movie', movie_id=movie.id) }}">
+		<h3>マイリストに追加する</h3>
+		<div class="status-selection">
+			<input type="radio" id="watched" name="status" value="watched" {% if saved_movie and saved_movie.watched == 1 %}checked{% endif %}>
+			<label for="watched">視聴済み</label>
+			
+			<input type="radio" id="to_watch" name="status" value="to_watch" {% if saved_movie and saved_movie.watched == 0 %}checked{% endif %}>
+			<label for="to_watch">視聴予定</label>
+		</div>
+		<button type="submit">保存</button>
+	</form>
+
+	
+	<div>
+		<h3>レビューを投稿</h3>
+		<form method="POST" action="{{ url_for('add_review', movie_id=movie.id) }}">
+			<div>
+				<label for="comment">コメント</label>
+				<textarea name="comment" id="comment" rows="3" required></textarea>
+			</div>
+			<button type="submit">レビューを投稿</button>
+		</form>
+	</div>
+
+	<div>
+		<h3>レビュー一覧</h3>
+		{% if reviews %}
+		<div>
+			{% for review in reviews %}
+			<div>
+				<div>
+					<span>{{ review.username }}</span>
+					<p>コメント：{{ review.comment }}</p>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+		{% else %}
+		<p>まだレビューはありません。</p>
+		{% endif %}
+	</div>
+
+	<a href="{{ url_for('mylist') }}">マイリストを見る</a>
+    </div>
+</body>
+</html>
