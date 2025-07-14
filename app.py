@@ -28,10 +28,25 @@ db_url = os.environ.get('DATEBASE_URL')
 #     finally:
 #         db.close()
 
+# @contextmanager
+# def get_db():
+#     conn = psycopg2.connect(db_url, sslmode='require')
+#     return conn
+
+
 @contextmanager
 def get_db():
-    con = psycopg2.connect(db_url, sslmode='require')
-    return con
+    conn = psycopg2.connect(
+        host="...",
+        database="...",
+        user="...",
+        password="...",
+        port=5432
+    )
+    try:
+        yield conn
+    finally:
+        conn.close()
 
 def search_movies_from_tmdb(query):
     params = {
