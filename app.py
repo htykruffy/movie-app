@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session
 import requests
 import psycopg2
 import psycopg2.extras
+import os
 from contextlib import contextmanager
 
 app = Flask(__name__)
@@ -11,19 +12,26 @@ TMDB_API_KEY = "ab6258adcf2845eb64ad01e30ec639d5"
 TMDB_SEARCH_URL = "https://api.themoviedb.org/3/search/movie"
 TMDB_IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w200"
 
+
+db_url = os.environ.get('DATEBASE_URL')
+# @contextmanager
+# def get_db():
+#     db = psycopg2.connect(
+#         host="localhost",
+#         database="postgres",
+#         user="hiratayuki",
+#         password="password",
+#         port=5432
+#     )
+#     try:
+#         yield db
+#     finally:
+#         db.close()
+
 @contextmanager
 def get_db():
-    db = psycopg2.connect(
-        host="localhost",
-        database="postgres",
-        user="hiratayuki",
-        password="password",
-        port=5432
-    )
-    try:
-        yield db
-    finally:
-        db.close()
+    con = psycopg2.connect(db_url, sslmode='require')
+    return con
 
 def search_movies_from_tmdb(query):
     params = {
