@@ -1,0 +1,30 @@
+Python
+pycache/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+Venv/
+ENV/
+env.bak/
+venv.bak/
+
+Dependencies
+通常、requirements.txt で管理されるため、個別のパッケージは無視
+*.egg-info/
+.eggs/
+
+OS Specific
+.DS_Store
+Thumbs.db
+
+MyPy
+.mypy_cache/
+
+Jupyter Notebook (もし使う場合)
+.ipynb_checkpoints/
+
+IDE specific files (例: VS Code)
+.vscode/
