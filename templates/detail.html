@@ -77,5 +77,23 @@
 
 	<a href="{{ url_for('mylist') }}">マイリストを見る</a>
     </div>
+    
+    <!-- キャスト表示ブロック ここから -->
+    <div>
+        <h3>出演キャスト（上位5名）</h3>
+        <div style="display: flex; gap: 16px;">
+            {% for cast in cast_list %}
+                <div style="text-align: center;">
+                    {% if cast.profile_path %}
+                        <img src="https://image.tmdb.org/t/p/w185{{ cast.profile_path }}" alt="{{ cast.name }}" style="width: 92px; height: 138px; object-fit: cover; border-radius: 8px;">
+                    {% else %}
+                        <div style="width: 92px; height: 138px; background: #eee; display: flex; align-items: center; justify-content: center; border-radius: 8px;">No Image</div>
+                    {% endif %}
+                    <div>{{ cast.name }}</div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- キャスト表示ブロック ここまで -->
 </body>
 </html>

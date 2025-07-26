@@ -133,6 +133,12 @@ def movie_detail(movie_id):
     res = requests.get(movie_url, params=params)
     movie = res.json()
 
+    # --- キャスト情報取得 ---
+    credits_url = f"https://api.themoviedb.org/3/movie/{movie_id}/credits"
+    credits_res = requests.get(credits_url, params={"api_key": TMDB_API_KEY, "language": "ja-JP"})
+    credits_data = credits_res.json()
+    cast_list = credits_data.get("cast", [])[:5]  # 上位5名
+
     with get_db() as db:
         with db.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
             cur.execute('SELECT * FROM movies WHERE user_id = %s AND movie_id = %s', (session['user_id'], movie_id))
@@ -147,7 +153,7 @@ def movie_detail(movie_id):
             ''', (movie_id,))
             reviews = cur.fetchall()
 
-    return render_template("detail.html", movie=movie, saved_movie=saved_movie, reviews=reviews)
+    return render_template("detail.html", movie=movie, saved_movie=saved_movie, reviews=reviews, cast_list=cast_list)
 
 @app.route('/movie/<int:movie_id>/review', methods=['POST'])
 def add_review(movie_id):
