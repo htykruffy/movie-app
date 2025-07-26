@@ -135,9 +135,9 @@ def movie_detail(movie_id):
 
     # --- キャスト情報取得 ---
     credits_url = f"https://api.themoviedb.org/3/movie/{movie_id}/credits"
-    credits_res = requests.get(credits_url, params={"api_key": TMDB_API_KEY, "language": "ja-JP"})
+    credits_res = requests.get(credits_url, params={"api_key": TMDB_API_KEY, "language": "en-US"})
     credits_data = credits_res.json()
-    cast_list = credits_data.get("cast", [])[:5]  # 上位5名
+    cast_list = credits_data.get("cast", [])[:7]  # 上位7名
 
     with get_db() as db:
         with db.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
