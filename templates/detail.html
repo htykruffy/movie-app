@@ -85,13 +85,11 @@
         <div>
             <h3>レビュー一覧</h3>
             {% if reviews %}
-            <div>
+            <div class="review-list">
                 {% for review in reviews %}
-                <div>
-                    <div>
-                        <span>{{ review.username }}</span>
-                        <p>コメント：{{ review.comment }}</p>
-                    </div>
+                <div class="review-item">
+                    <div class="review-username">{{ review.username }}</div>
+                    <div class="review-comment">{{ review.comment }}</div>
                 </div>
                 {% endfor %}
             </div>
