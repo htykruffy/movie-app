@@ -239,3 +239,44 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
     display: -webkit-box;
     -webkit-box-orient: vertical;
 } 
+
+/* レビュー一覧用スタイル */
+.review-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.review-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    padding: 16px 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 8px;
+}
+
+.review-username {
+    font-weight: bold;
+    color: #dc3545;
+    font-size: 1.1em;
+}
+
+.review-time {
+    color: #888;
+    font-size: 0.95em;
+}
+
+.review-comment {
+    font-size: 1em;
+    color: #222;
+    line-height: 1.6;
+    white-space: pre-line;
+} 

@@ -150,7 +150,7 @@ def movie_detail(movie_id):
             saved_movie = cur.fetchone()
 
             cur.execute('''
-                SELECT r.comment, u.name as username 
+                SELECT r.comment, u.name as username, r.created_at 
                 FROM reviews r 
                 JOIN users u ON r.user_id = u.id 
                 WHERE r.movie_id = %s 
