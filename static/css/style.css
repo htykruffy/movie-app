@@ -108,15 +108,21 @@
 /* マイリスト追加フォーム用スタイル */
 .mylist-form {
     margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .mylist-form h3 {
-    margin: 0 0 10px 0;
+    margin: 0;
     font-size: 1.1em;
 }
 
 .status-selection {
-    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 .status-selection input[type="radio"] {
@@ -124,8 +130,11 @@
 }
 
 .status-selection label {
-    margin-right: 20px;
     cursor: pointer;
+}
+
+.mylist-form button {
+    margin-left: auto;
 }
 
 
