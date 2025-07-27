@@ -106,6 +106,46 @@
     font-weight: 600;
 }
 
+
+/* ボタンスタイル統一 */
+button, input[type="submit"] {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color: #c82333;
+}
+
+button:active, input[type="submit"]:active {
+    background-color: #bd2130;
+}
+
+/* フォーム要素のスタイル */
+input[type="text"], input[type="password"], textarea {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
+    outline: none;
+    border-color: #dc3545;
+    box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.2);
+}
+
+
+
 .user-info {
     display: flex;
     align-items: center;
