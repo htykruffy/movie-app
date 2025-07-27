@@ -175,6 +175,18 @@ def add_review(movie_id):
 
     return redirect(url_for('movie_detail', movie_id=movie_id))
 
+@app.route('/movie/<int:movie_id>/review/delete', methods=['POST'])
+def delete_review(movie_id):
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+    comment = request.form.get('comment')
+    with get_db() as db:
+        with db.cursor() as cur:
+            cur.execute('DELETE FROM reviews WHERE movie_id = %s AND user_id = %s AND comment = %s',
+                        (movie_id, session['user_id'], comment))
+            db.commit()
+    return redirect(url_for('movie_detail', movie_id=movie_id))
+
 @app.route('/mylist')
 def mylist():
     if 'user_id' not in session:
