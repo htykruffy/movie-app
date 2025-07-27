@@ -150,7 +150,7 @@ def movie_detail(movie_id):
             saved_movie = cur.fetchone()
 
             cur.execute('''
-                SELECT r.comment, u.name as username, r.rating 
+                SELECT r.comment, u.name as username 
                 FROM reviews r 
                 JOIN users u ON r.user_id = u.id 
                 WHERE r.movie_id = %s 
@@ -166,12 +166,11 @@ def add_review(movie_id):
         return redirect(url_for('login'))
 
     comment = request.form.get('comment')
-    rating = request.form.get('rating')
 
     with get_db() as db:
         with db.cursor() as cur:
-            cur.execute('INSERT INTO reviews (movie_id, user_id, comment, rating) VALUES (%s, %s, %s, %s)',
-                        (movie_id, session['user_id'], comment, rating))
+            cur.execute('INSERT INTO reviews (movie_id, user_id, comment) VALUES (%s, %s, %s)',
+                        (movie_id, session['user_id'], comment))
             db.commit()
 
     return redirect(url_for('movie_detail', movie_id=movie_id))
