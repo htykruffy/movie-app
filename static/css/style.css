@@ -169,12 +169,15 @@ input[type="text"], input[type="password"], textarea {
     font-size: 14px;
     width: 100%;
     box-sizing: border-box;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    background: #fff;
+    transition: box-shadow 0.2s, border-color 0.2s;
 }
 
 input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
     outline: none;
     border-color: #dc3545;
-    box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.2);
+    box-shadow: 0 4px 16px rgba(220,53,69,0.15);
 }
 
 /* 検索フォーム用スタイル */
