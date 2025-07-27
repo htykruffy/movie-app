@@ -30,6 +30,9 @@
             <p><strong>概要:</strong> {{ movie.overview }}</p>
             <p><strong>公開日:</strong> {{ movie.release_date }}</p>
             <p><strong>平均評価:</strong> {{ movie.vote_average }}</p>
+            {% if director_names %}
+            <p><strong>監督:</strong> {{ director_names|join(', ') }}</p>
+            {% endif %}
         </div>
         
         <!-- キャスト表示ブロック ここから -->
