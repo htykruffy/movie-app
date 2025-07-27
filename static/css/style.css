@@ -144,6 +144,22 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
     box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.2);
 }
 
+/* 検索フォーム用スタイル */
+.search-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-form input[type="text"] {
+    width: 300px;
+    flex-shrink: 0;
+}
+
+.search-form input[type="submit"] {
+    flex-shrink: 0;
+}
 
 
 .user-info {
