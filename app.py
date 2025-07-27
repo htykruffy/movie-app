@@ -150,7 +150,7 @@ def movie_detail(movie_id):
             saved_movie = cur.fetchone()
 
             cur.execute('''
-                SELECT r.comment, u.name as username 
+                SELECT r.id, r.comment, u.name as username 
                 FROM reviews r 
                 JOIN users u ON r.user_id = u.id 
                 WHERE r.movie_id = %s 
@@ -179,11 +179,11 @@ def add_review(movie_id):
 def delete_review(movie_id):
     if 'user_id' not in session:
         return redirect(url_for('login'))
-    comment = request.form.get('comment')
+    review_id = request.form.get('review_id')
     with get_db() as db:
         with db.cursor() as cur:
-            cur.execute('DELETE FROM reviews WHERE movie_id = %s AND user_id = %s AND comment = %s',
-                        (movie_id, session['user_id'], comment))
+            cur.execute('DELETE FROM reviews WHERE id = %s AND user_id = %s',
+                        (review_id, session['user_id']))
             db.commit()
     return redirect(url_for('movie_detail', movie_id=movie_id))
 
