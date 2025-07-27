@@ -266,3 +266,57 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
     line-height: 1.6;
     white-space: pre-line;
 } 
+
+/* ログイン画面用スタイル */
+.login-page-container {
+    max-width: 500px;
+    width: 100%;
+    margin: 60px auto 0 auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    padding: 32px 28px 28px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-page-container h1 {
+    margin-bottom: 24px;
+    font-size: 2em;
+}
+
+.login-page-container form {
+    width: 100%;
+}
+
+.login-page-container .form-group {
+    margin-bottom: 18px;
+}
+
+.login-page-container label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.login-page-container input[type="text"],
+.login-page-container input[type="password"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.login-page-container button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.login-page-container .error {
+    color: #dc3545;
+    margin-bottom: 16px;
+    text-align: center;
+} 
