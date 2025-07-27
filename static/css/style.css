@@ -86,8 +86,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    min-height: 450px; /* ポスター画像の高さに合わせる */
+    gap: 15px;
 }
 
 .detail-info h1 {

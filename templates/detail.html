@@ -34,21 +34,21 @@
                 <p><strong>監督:</strong> {{ director_names|join(', ') }}</p>
                 {% endif %}
                 <p><strong>概要:</strong> {{ movie.overview }}</p>
+                
+                <form method="POST" action="{{ url_for('save_movie', movie_id=movie.id) }}" class="mylist-form">
+                    <h3>マイリストに追加する</h3>
+                    <div class="status-selection">
+                        <input type="radio" id="watched" name="status" value="watched" {% if saved_movie and saved_movie.watched == 1 %}checked{% endif %}>
+                        <label for="watched">視聴済み</label>
+                        
+                        <input type="radio" id="to_watch" name="status" value="to_watch" {% if saved_movie and saved_movie.watched == 0 %}checked{% endif %}>
+                        <label for="to_watch">視聴予定</label>
+                    </div>
+                    <button type="submit">保存</button>
+                </form>
             </div>
         </div>
         
-        <form method="POST" action="{{ url_for('save_movie', movie_id=movie.id) }}" class="mylist-form">
-            <h3>マイリストに追加する</h3>
-            <div class="status-selection">
-                <input type="radio" id="watched" name="status" value="watched" {% if saved_movie and saved_movie.watched == 1 %}checked{% endif %}>
-                <label for="watched">視聴済み</label>
-                
-                <input type="radio" id="to_watch" name="status" value="to_watch" {% if saved_movie and saved_movie.watched == 0 %}checked{% endif %}>
-                <label for="to_watch">視聴予定</label>
-            </div>
-            <button type="submit">保存</button>
-        </form>
-
         <!-- キャスト表示ブロック ここから -->
         <div class="cast-section">
             <h3>出演キャスト（上位10名）</h3>
