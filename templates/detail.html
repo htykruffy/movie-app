@@ -25,14 +25,16 @@
 
     <div class="container">
         <div class="detail-content">
-            <h1>{{ movie.title }}</h1>
             <img src="https://image.tmdb.org/t/p/w300{{ movie.poster_path }}" alt="{{ movie.title }}">
-            <p><strong>概要:</strong> {{ movie.overview }}</p>
-            <p><strong>公開日:</strong> {{ movie.release_date }}</p>
-            <p><strong>平均評価:</strong> {{ movie.vote_average }}</p>
-            {% if director_names %}
-            <p><strong>監督:</strong> {{ director_names|join(', ') }}</p>
-            {% endif %}
+            <div class="detail-info">
+                <h1>{{ movie.title }}</h1>
+                <p><strong>公開日:</strong> {{ movie.release_date }}</p>
+                <p><strong>平均評価:</strong> {{ movie.vote_average }}</p>
+                {% if director_names %}
+                <p><strong>監督:</strong> {{ director_names|join(', ') }}</p>
+                {% endif %}
+                <p><strong>概要:</strong> {{ movie.overview }}</p>
+            </div>
         </div>
         
         <!-- キャスト表示ブロック ここから -->

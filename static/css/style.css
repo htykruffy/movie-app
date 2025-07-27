@@ -67,6 +67,43 @@
     font-weight: 500;
 }
 
+/* 映画詳細ページ用スタイル */
+.detail-content {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.detail-content img {
+    width: 300px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.detail-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.detail-info h1 {
+    margin: 0;
+    font-size: 2.5em;
+    line-height: 1.2;
+}
+
+.detail-info p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.detail-info strong {
+    color: #333;
+    font-weight: 600;
+}
 
 .user-info {
     display: flex;
