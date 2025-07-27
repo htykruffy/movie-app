@@ -240,11 +240,11 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
     -webkit-box-orient: vertical;
 } 
 
-/* レビュー一覧用スタイル */
+/* レビュー一覧用シンプルスタイル */
 .review-list {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 16px;
     margin-top: 20px;
 }
 
@@ -252,26 +252,12 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
     border: 1px solid #ddd;
     border-radius: 8px;
     background: #fff;
-    padding: 16px 20px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-}
-
-.review-header {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 8px;
+    padding: 14px 18px;
 }
 
 .review-username {
     font-weight: bold;
-    color: #dc3545;
-    font-size: 1.1em;
-}
-
-.review-time {
-    color: #888;
-    font-size: 0.95em;
+    margin-bottom: 6px;
 }
 
 .review-comment {

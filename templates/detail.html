@@ -88,10 +88,7 @@
             <div class="review-list">
                 {% for review in reviews %}
                 <div class="review-item">
-                    <div class="review-header">
-                        <span class="review-username">{{ review.username }}</span>
-                        <span class="review-time">{{ review.created_at.strftime('%Y-%m-%d %H:%M') if review.created_at else '' }}</span>
-                    </div>
+                    <div class="review-username">{{ review.username }}</div>
                     <div class="review-comment">{{ review.comment }}</div>
                 </div>
                 {% endfor %}
