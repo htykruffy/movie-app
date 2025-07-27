@@ -43,6 +43,9 @@
                         
                         <input type="radio" id="to_watch" name="status" value="to_watch" {% if saved_movie and saved_movie.watched == 0 %}checked{% endif %}>
                         <label for="to_watch">視聴予定</label>
+
+                        <input type="radio" id="delete" name="status" value="delete">
+                        <label for="delete">削除</label>
                     </div>
                     <button type="submit">保存</button>
                 </form>

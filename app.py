@@ -208,6 +208,13 @@ def save_movie(movie_id):
         return redirect(url_for('login'))
 
     status = request.form.get('status')
+    if status == 'delete':
+        with get_db() as db:
+            with db.cursor() as cur:
+                cur.execute('DELETE FROM movies WHERE user_id = %s AND movie_id = %s', (session['user_id'], movie_id))
+                db.commit()
+        return redirect(url_for('mylist'))
+
     watched = 1 if status == 'watched' else 0
 
     with get_db() as db:
